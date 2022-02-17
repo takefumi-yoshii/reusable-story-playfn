@@ -35,8 +35,7 @@ export const FillAll: Story = {
 //
 type Context = StoryContext<ReactFramework, unknown>;
 const fillAndSubmit =
-  (inlinePlay?: (ctx: Context) => Promise<void>) =>
-  async (ctx: StoryContext<ReactFramework, unknown>) => {
+  (inlinePlay?: (ctx: Context) => Promise<void>) => async (ctx: Context) => {
     await FillAll.play?.(ctx);
     await inlinePlay?.(ctx);
     const ui = within(ctx.canvasElement);
