@@ -1,8 +1,7 @@
+import React from 'react';
 import { composeStories } from "@storybook/testing-react";
 import "@testing-library/jest-dom/extend-expect";
 import { render } from "@testing-library/react";
-import React from "react";
-import { setupMockServer } from "../../utils/jest";
 import * as stories from "./Form.stories";
 // ____________________________________________________________
 //
@@ -17,7 +16,6 @@ const {
 } = composeStories(stories);
 // ____________________________________________________________
 //
-const server = setupMockServer();
 
 describe("components/From", () => {
   describe("フロントエンド バリデーション", () => {
@@ -60,7 +58,6 @@ describe("components/From", () => {
   });
   describe("サーバーサイド バリデーション", () => {
     test("送信が失敗した時、警告が表示されること", async () => {
-      server.use(...FailedSubmit.parameters?.msw.handlers);
       const { container, findByRole } = render(<FailedSubmit />);
       await FailedSubmit.play({ canvasElement: container });
       expect(await findByRole("alert")).toHaveTextContent(

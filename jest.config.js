@@ -1,7 +1,7 @@
 module.exports = {
   testEnvironment: "jsdom",
   transform: {
-    "^.+\\.(ts|tsx)$": "esbuild-jest",
+    "^.+\\.(js|ts|tsx)$": "esbuild-jest",
     ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$":
       "jest-transform-stub",
   },
